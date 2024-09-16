@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Пользователи:</div>
+    <ul>
+        <li>Джон</li>
+        <li>Пит</li>
+    </ul>
+
+
+    <form id="myForm">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Отправить">
+    </form>
+
+    <div class="message" id="message"></div>
+
+
+
+    <script>
+        //Задание 1
+        let div = document.querySelector('div');
+        console.log(div);
+
+        let ul = document.querySelector('ul');
+        console.log(ul);
+
+        let secondLi = document.querySelectorAll('li')[1];
+        console.log(secondLi);
+
+        let html = document.documentElement;
+        console.log(html);
+        //////////////////////////////////////
+
+        //Задание 2
+        let listItems = document.querySelectorAll('li');
+
+        listItems.forEach(item => {
+            item.classList.add('list-item');
+        });
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        //Задание 3
+        let count = prompt("Введите количество блоков:", 5);
+
+
+        if (!isNaN(count) && count > 0) {
+
+            count = Number(count);
+
+
+            for (let i = 0; i < count; i++) {
+
+                let block = document.createElement('div');
+                block.className = 'block';
+
+
+                document.body.appendChild(block);
+            }
+        } else {
+            alert("Пожалуйста, введите корректное число!");
+        }
+        ///////////////////////////////////////////////////
+
+        //Задание 4
+        document.getElementById('myForm').onsubmit = function (event) {
+            event.preventDefault(); 
+
+            
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+
+           
+            if (name && email) {
+                document.getElementById('message').textContent = "Имя: " + name + ", Email: " + email;
+            } else {
+                document.getElementById('message').textContent = "Пожалуйста, заполните все поля.";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
